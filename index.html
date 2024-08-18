@@ -3,27 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scalable Fixed Box</title>
+  <title>Scalable Box with Background</title>
   <style>
-    /* Basic styles to remove default margin */
+    /* Basic styles to remove margin */
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
+      overflow: hidden;
     }
 
-    /* The scalable container */
+    /* Background image */
+    body {
+      background-image: url('https://via.placeholder.com/1920x1080'); /* Replace with your background */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* The scalable container box */
     .scalable-box {
       width: 800px;
       height: 200px;
-      background-color: #f0f0f0;
+      background-color: rgba(255, 255, 255, 0.8); /* Transparent box */
       border: 2px solid #333;
       position: fixed;
       top: 0;
       left: 50%;
-      transform: translateX(-50%); /* Center the box horizontally */
-      transform-origin: top left;  /* Scaling should originate from top-left */
-      transition: transform 0.3s ease; /* Smooth scaling transition */
+      transform: translateX(-50%); /* Center horizontally */
+      transform-origin: top left;  /* Scale should originate from top-left */
+      transition: transform 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     /* Content inside the box */
@@ -60,17 +72,17 @@
     </div>
   </div>
 
-  <!-- Slider to control the zoom -->
-  <div style="text-align: center; margin-top: 220px;">
+  <!-- Zoom slider to simulate page zooming -->
+  <div style="text-align: center; margin-top: 220px; color: white;">
     <input type="range" id="scaleSlider" min="0.5" max="2" step="0.01" value="1" style="width: 300px;">
-    <label for="scaleSlider">Zoom</label>
+    <label for="scaleSlider">Zoom Content</label>
   </div>
 
   <script>
     const scalableBox = document.getElementById("scalableBox");
     const scaleSlider = document.getElementById("scaleSlider");
 
-    // Update the scale of the container based on the slider value
+    // Update the scale of the box based on the slider value
     scaleSlider.addEventListener("input", function() {
       const scaleLevel = scaleSlider.value;
       scalableBox.style.transform = `translateX(-50%) scale(${scaleLevel})`;
