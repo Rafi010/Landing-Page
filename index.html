@@ -32,7 +32,6 @@
       left: 50%;
       transform: translateX(-50%); /* Center horizontally */
       transform-origin: top left;  /* Scale should originate from top-left */
-      transition: transform 0.3s ease;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -63,7 +62,7 @@
 <body>
 
   <!-- Scalable Box Fixed at the Top -->
-  <div class="scalable-box" id="scalableBox">
+  <div class="scalable-box">
     <div class="content">
       <img src="https://via.placeholder.com/100" alt="Image 1">
       <img src="https://via.placeholder.com/100" alt="Image 2">
@@ -71,23 +70,6 @@
       <a href="#">Link 2</a>
     </div>
   </div>
-
-  <!-- Zoom slider to simulate page zooming -->
-  <div style="text-align: center; margin-top: 220px; color: white;">
-    <input type="range" id="scaleSlider" min="0.5" max="2" step="0.01" value="1" style="width: 300px;">
-    <label for="scaleSlider">Zoom Content</label>
-  </div>
-
-  <script>
-    const scalableBox = document.getElementById("scalableBox");
-    const scaleSlider = document.getElementById("scaleSlider");
-
-    // Update the scale of the box based on the slider value
-    scaleSlider.addEventListener("input", function() {
-      const scaleLevel = scaleSlider.value;
-      scalableBox.style.transform = `translateX(-50%) scale(${scaleLevel})`;
-    });
-  </script>
 
 </body>
 </html>
